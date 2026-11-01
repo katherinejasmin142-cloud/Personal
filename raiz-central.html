@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raíz Central · Ruta Local del Centro Histórico</title>
+<style>
+:root{--bg:#faf6ec;--card:#fff;--ink:#16233f;--mut:#5b6578;--navy:#12264a;--gold:#c9972b;--soft:#f3ead3;--line:#e5dcc3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1626;--card:#16233b;--ink:#eef1f7;--mut:#a9b3c6;--navy:#0a1424;--soft:#1d2d4a;--line:#2b3d5e}}
+:root[data-theme="dark"]{--bg:#0e1626;--card:#16233b;--ink:#eef1f7;--mut:#a9b3c6;--navy:#0a1424;--soft:#1d2d4a;--line:#2b3d5e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.5}
+h1,h2,h3,.sans,button,nav{font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+header.top{background:var(--navy);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header.top .wrap{display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:1.1rem;color:var(--gold)}
+nav{display:flex;gap:14px;flex:1;font-size:.85rem;overflow-x:auto}
+nav a{color:#fff;text-decoration:none;white-space:nowrap;opacity:.9}
+.lang{background:var(--gold);color:#12264a;border:0;border-radius:20px;padding:6px 14px;font-weight:700;cursor:pointer}
+.hero{background:linear-gradient(135deg,var(--navy),#1f3d73);color:#fff;padding:44px 0}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.hero h1{font-size:2.3rem;margin:0 0 8px}
+.hero p{margin:0 0 16px;color:#dfe6f5}
+.gold{color:var(--gold)}
+.btn{display:inline-block;background:var(--gold);color:#12264a;font-weight:700;border:0;border-radius:10px;padding:11px 20px;text-decoration:none;cursor:pointer;font-size:.95rem}
+.stats{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.stats div{background:rgba(255,255,255,.1);border-radius:10px;padding:8px 14px;font-family:system-ui,sans-serif;font-size:.8rem}
+.stats b{display:block;font-size:1.5rem;color:var(--gold)}
+section{padding:36px 0}
+section h2{font-size:1.6rem;margin:0 0 6px}
+.sub{color:var(--mut);margin:0 0 20px}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card .pad{padding:14px 16px}
+.pkg.best{border:2px solid var(--gold);box-shadow:0 4px 18px rgba(201,151,43,.25)}
+.tag{display:inline-block;background:var(--gold);color:#12264a;font-size:.7rem;font-weight:700;border-radius:20px;padding:2px 10px;font-family:system-ui,sans-serif}
+.price{font-family:system-ui,sans-serif;font-size:2rem;font-weight:800;color:var(--navy)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .price{color:var(--gold)}}
+.price small{font-size:.8rem;font-weight:500;color:var(--mut)}
+ul.clean{margin:8px 0 0;padding-left:18px;font-size:.9rem}
+.plan{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.plan button{border:1px solid var(--gold);background:var(--card);color:var(--ink);border-radius:20px;padding:7px 14px;cursor:pointer}
+.plan button.on{background:var(--gold);color:#12264a;font-weight:700}
+.stop{display:grid;grid-template-columns:120px 1fr;gap:0}
+.stop svg{width:120px;height:100%;min-height:110px;display:block}
+.stop h3{margin:0 0 2px;font-size:1rem}
+.stop .m{font-size:.85rem;color:var(--mut);margin:4px 0 8px}
+.stop .mis{font-size:.85rem;background:var(--soft);border-radius:8px;padding:6px 9px}
+.stamp{margin-top:8px;border:2px dashed var(--gold);background:transparent;color:var(--ink);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:.8rem}
+.stamp.done{background:var(--gold);border-style:solid;color:#12264a;font-weight:700}
+.pass{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.dot{width:54px;height:54px;border-radius:50%;border:3px dashed var(--line);display:grid;place-items:center;font-family:system-ui,sans-serif;font-weight:700;color:var(--mut)}
+.dot.on{border:3px solid var(--gold);background:var(--gold);color:#12264a;transform:rotate(-8deg)}
+.imp{display:flex;gap:14px;flex-wrap:wrap;font-family:system-ui,sans-serif}
+.imp div{flex:1;min-width:120px;background:var(--soft);border-radius:12px;padding:12px;text-align:center}
+.imp b{font-size:1.9rem;display:block;color:var(--navy)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .imp b{color:var(--gold)}}
+#prize{display:none;margin-top:12px;padding:12px;border-radius:10px;background:var(--gold);color:#12264a;font-weight:700;font-family:system-ui,sans-serif}
+.mapbox{overflow-x:auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wa{background:#dcf8c6;color:#1b2a1b;border-radius:12px;padding:12px;font-family:system-ui,sans-serif;font-size:.85rem}
+footer{background:var(--navy);color:#cfd8ea;padding:24px 0;font-family:system-ui,sans-serif;font-size:.85rem}
+@media(max-width:700px){.hero .wrap,.two{grid-template-columns:1fr}.hero h1{font-size:1.8rem}.stop{grid-template-columns:96px 1fr}.stop svg{width:96px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<span class="logo">Raíz Central</span>
+<nav><a href="#paquetes" data-es="Paquetes" data-en="Packages">Paquetes</a><a href="#ruta" data-es="Ruta" data-en="Route">Ruta</a><a href="#pasaporte" data-es="Pasaporte" data-en="Passport">Pasaporte</a><a href="#impacto" data-es="Impacto" data-en="Impact">Impacto</a></nav>
+<button class="lang" id="lang">EN</button></div></header>
+
+<div class="hero"><div class="wrap">
+<div>
+<h1 data-es="Camina la historia, <span class='gold'>consume lo nuestro</span>" data-en="Walk the history, <span class='gold'>shop local</span>">Camina la historia, <span class="gold">consume lo nuestro</span></h1>
+<p data-es="La ruta local del Centro Histórico de San Salvador: seis paradas, sabores típicos, un taller corto y un pasaporte de sellos. Reserva un paquete para toda tu familia o grupo." data-en="The local route of San Salvador's Historic Center: six stops, traditional flavors, a short workshop and a stamp passport. Book one package for your whole family or group.">La ruta local del Centro Histórico de San Salvador: seis paradas, sabores típicos, un taller corto y un pasaporte de sellos. Reserva un paquete para toda tu familia o grupo.</p>
+<a class="btn" href="#paquetes" data-es="Armar mi ruta" data-en="Build my route">Armar mi ruta</a>
+<div class="stats">
+<div><b>67%</b><span data-es="interesado en la ruta" data-en="interested in the route">interesado en la ruta</span></div>
+<div><b>85%</b><span data-es="pagaría al menos $10" data-en="would pay at least $10">pagaría al menos $10</span></div>
+<div><b>77%</b><span data-es="prefiere video corto" data-en="prefers short video">prefiere video corto</span></div>
+</div></div>
+<svg viewBox="0 0 300 200" role="img" aria-label="Ilustración del Centro Histórico"><rect width="300" height="200" rx="16" fill="#2a4d8a"/><circle cx="240" cy="48" r="24" fill="#f3c969"/><rect y="150" width="300" height="50" fill="#1b3560"/><rect x="30" y="90" width="110" height="60" fill="#f1e6c6"/><polygon points="25,90 85,58 145,90" fill="#c9972b"/><g fill="#12264a"><rect x="42" y="104" width="12" height="46"/><rect x="66" y="104" width="12" height="46"/><rect x="90" y="104" width="12" height="46"/><rect x="114" y="104" width="12" height="46"/></g><rect x="165" y="70" width="26" height="80" fill="#e9dcb3"/><rect x="215" y="70" width="26" height="80" fill="#e9dcb3"/><rect x="191" y="100" width="24" height="50" fill="#d8c88d"/><polygon points="165,70 178,48 191,70" fill="#c9972b"/><polygon points="215,70 228,48 241,70" fill="#c9972b"/><circle cx="203" cy="92" r="12" fill="#c9972b"/></svg>
+</div></div>
+
+<section id="paquetes"><div class="wrap">
+<h2 data-es="Paquetes por grupo" data-en="Group packages">Paquetes por grupo</h2>
+<p class="sub" data-es="Un solo precio para el grupo (hasta 4 personas), no por persona. Precios de referencia." data-en="One price for the whole group (up to 4 people), not per person. Reference prices.">Un solo precio para el grupo (hasta 4 personas), no por persona. Precios de referencia.</p>
+<div class="plan sans"><span data-es="¿Cuánto quieren gastar en total?" data-en="What is your group budget?">¿Cuánto quieren gastar en total?</span>
+<button data-b="40">$40</button><button data-b="70">$70</button><button data-b="100">$100</button><span id="rec"></span></div>
+<div class="grid g3">
+<div class="card pkg" id="p1"><svg viewBox="0 0 300 90" style="display:block;width:100%"><rect width="300" height="90" fill="#3d6bb3"/><rect y="62" width="300" height="28" fill="#2a4d8a"/><rect x="60" y="30" width="70" height="32" fill="#f1e6c6"/><polygon points="55,30 95,12 135,30" fill="#c9972b"/><circle cx="210" cy="28" r="14" fill="#f3c969"/></svg><div class="pad"><h3 data-es="Paquete Express" data-en="Express Package">Paquete Express</h3><div class="price">$34.90 <small data-es="por grupo" data-en="per group">por grupo</small></div><ul class="clean"><li data-es="Menos de 2 horas, 3 paradas" data-en="Under 2 hours, 3 stops">Menos de 2 horas, 3 paradas</li><li data-es="1 degustación" data-en="1 tasting">1 degustación</li><li data-es="Mapa interactivo, QR y pasaporte" data-en="Interactive map, QR and passport">Mapa interactivo, QR y pasaporte</li></ul></div></div>
+<div class="card pkg best" id="p2"><svg viewBox="0 0 300 90" style="display:block;width:100%"><rect width="300" height="90" fill="#c9972b"/><rect y="62" width="300" height="28" fill="#a97b17"/><rect x="40" y="26" width="30" height="36" fill="#f1e6c6"/><rect x="100" y="26" width="30" height="36" fill="#f1e6c6"/><rect x="70" y="40" width="30" height="22" fill="#e3d4a2"/><circle cx="85" cy="34" r="10" fill="#12264a"/><circle cx="200" cy="50" r="22" fill="#fff"/><circle cx="200" cy="50" r="12" fill="#e8b4a0"/><circle cx="250" cy="52" r="16" fill="#fff"/></svg><div class="pad"><span class="tag" data-es="MÁS ELEGIDO" data-en="MOST POPULAR">MÁS ELEGIDO</span><h3 data-es="Paquete Familiar Clásico" data-en="Classic Family Package">Paquete Familiar Clásico</h3><div class="price">$64.90 <small data-es="por grupo" data-en="per group">por grupo</small></div><ul class="clean"><li data-es="2 a 4 horas, 6 paradas" data-en="2 to 4 hours, 6 stops">2 a 4 horas, 6 paradas</li><li data-es="Degustaciones y taller corto" data-en="Tastings and short workshop">Degustaciones y taller corto</li><li data-es="Guía en grupo y misiones familiares" data-en="Group guide and family missions">Guía en grupo y misiones familiares</li></ul></div></div>
+<div class="card pkg" id="p3"><svg viewBox="0 0 300 90" style="display:block;width:100%"><rect width="300" height="90" fill="#0d1a33"/><circle cx="240" cy="26" r="13" fill="#f3e9c2"/><rect y="62" width="300" height="28" fill="#08122a"/><rect x="70" y="30" width="80" height="32" fill="#d8c88d"/><polygon points="64,30 110,10 156,30" fill="#c9972b"/><g fill="#f3c969"><circle cx="30" cy="20" r="2"/><circle cx="180" cy="14" r="2"/><circle cx="280" cy="50" r="2"/></g></svg><div class="pad"><h3 data-es="Paquete Ruta Nocturna" data-en="Night Route Package">Paquete Ruta Nocturna</h3><div class="price">$94.90 <small data-es="por grupo" data-en="per group">por grupo</small></div><ul class="clean"><li data-es="Evento cultural y música" data-en="Cultural event and music">Evento cultural y música</li><li data-es="Cena típica" data-en="Traditional dinner">Cena típica</li><li data-es="Guía bilingüe" data-en="Bilingual guide">Guía bilingüe</li></ul></div></div>
+</div>
+<p class="sub sans" style="margin-top:14px;font-size:.85rem" data-es="Ninguna ruta supera $25 por persona en un grupo de 4. Regalo: también se vende como pase de cumpleaños, grupo de amigos o actividad de empresa." data-en="No route exceeds $25 per person in a group of 4. Gift option: also sold as a birthday pass, friends group or company activity.">Ninguna ruta supera $25 por persona en un grupo de 4. Regalo: también se vende como pase de cumpleaños, grupo de amigos o actividad de empresa.</p>
+</div></section>
+
+<section id="ruta" style="background:var(--soft)"><div class="wrap">
+<h2 data-es="La ruta en 6 paradas" data-en="The route in 6 stops">La ruta en 6 paradas</h2>
+<p class="sub" data-es="Cada parada tiene un QR, una misión para la familia y un sello para el pasaporte." data-en="Every stop has a QR, a family mission and a passport stamp.">Cada parada tiene un QR, una misión para la familia y un sello para el pasaporte.</p>
+<div class="mapbox"><svg viewBox="0 0 640 110" style="min-width:560px;width:100%" id="map"></svg></div>
+<div class="grid g3" id="stops" style="margin-top:16px"></div>
+</div></section>
+
+<section id="pasaporte"><div class="wrap two">
+<div><h2 data-es="Pasaporte de sellos" data-en="Stamp passport">Pasaporte de sellos</h2>
+<p class="sub" data-es="Prueba la demo: toca «Escanear QR» en cada parada para ganar el sello." data-en="Try the demo: tap “Scan QR” at each stop to earn the stamp.">Prueba la demo: toca «Escanear QR» en cada parada para ganar el sello.</p>
+<div class="pass" id="pass"></div>
+<div id="prize" data-es="¡Ruta completa! Ganaron un café o dulce de cortesía y un descuento para volver." data-en="Route complete! You won a free coffee or sweet and a discount for your next visit.">¡Ruta completa! Ganaron un café o dulce de cortesía y un descuento para volver.</div></div>
+<div id="impacto"><h2 data-es="Contador de impacto · ODS 8" data-en="Impact counter · SDG 8">Contador de impacto · ODS 8</h2>
+<p class="sub" id="impmsg"></p>
+<div class="imp"><div><b id="ie">0</b><span data-es="emprendedores apoyados" data-en="entrepreneurs supported">emprendedores apoyados</span></div><div><b id="ig">0</b><span data-es="guías con trabajo" data-en="guides employed">guías con trabajo</span></div></div></div>
+</div></section>
+
+<section style="background:var(--soft)"><div class="wrap two">
+<div class="card"><div class="pad"><h3 data-es="Recordatorio por WhatsApp" data-en="WhatsApp reminder">Recordatorio por WhatsApp</h3>
+<div class="wa" data-es="Hola, familia. Su Paquete Familiar Clásico es el sábado a las 3:00 p. m. en el Palacio Nacional. Aquí están su QR, el mapa y un 10 % de descuento para su próxima visita." data-en="Hi, family! Your Classic Family Package is on Saturday at 3:00 p.m. at the National Palace. Here are your QR, the map and 10% off your next visit.">Hola, familia. Su Paquete Familiar Clásico es el sábado a las 3:00 p. m. en el Palacio Nacional. Aquí están su QR, el mapa y un 10 % de descuento para su próxima visita.</div></div></div>
+<div class="card"><div class="pad"><h3 data-es="Comunidad #RaízCentral" data-en="#RaízCentral community">Comunidad #RaízCentral</h3>
+<p style="margin:6px 0;font-size:.9rem" data-es="Reto de fotos con premio mensual, reseñas verificadas (solo opinan quienes completaron la ruta) y videos cortos con creadores locales. Nuestra mascota, Raicito, narra la ruta." data-en="Photo challenge with a monthly prize, verified reviews (only people who completed the route can review) and short videos with local creators. Our mascot, Raicito, narrates the route.">Reto de fotos con premio mensual, reseñas verificadas (solo opinan quienes completaron la ruta) y videos cortos con creadores locales. Nuestra mascota, Raicito, narra la ruta.</p>
+<svg viewBox="0 0 120 80" width="110" role="img" aria-label="Raicito"><path d="M60 70 C60 50 60 45 60 40" stroke="#8a5a2b" stroke-width="6" fill="none"/><path d="M60 62 C48 66 40 70 32 74 M60 62 C72 66 82 70 90 74" stroke="#8a5a2b" stroke-width="4" fill="none"/><circle cx="60" cy="28" r="22" fill="#6aa84f"/><circle cx="52" cy="26" r="3" fill="#12264a"/><circle cx="68" cy="26" r="3" fill="#12264a"/><path d="M52 35 Q60 41 68 35" stroke="#12264a" stroke-width="2.5" fill="none"/><path d="M50 8 Q60 -2 70 8" fill="#c9972b"/></svg></div></div>
+</div></section>
+
+<footer><div class="wrap"><b>Raíz Central</b> · Making Marketing 2026 · <span data-es="Prototipo académico. Precios, negocios y fotos finales por validar con los aliados." data-en="Academic prototype. Final prices, businesses and photos to be validated with partners.">Prototipo académico. Precios, negocios y fotos finales por validar con los aliados.</span> #RaízCentral</div></footer>
+
+<script>
+var S=[
+["Palacio Nacional",20,"Punto de encuentro, historia y foto grupal.","Encuentren el escudo en la fachada y tomen la foto grupal.","National Palace","Meeting point, history and group photo.","Find the coat of arms on the facade and take the group photo.",1,0,1],
+["Catedral y Plaza Gerardo Barrios",25,"Patrimonio y vida de plaza con artistas locales.","Busquen el mural de colores de la fachada.","Cathedral and Plaza Gerardo Barrios","Heritage and plaza life with local artists.","Find the colorful mural on the facade.",0,1,0],
+["Parada gastronómica",30,"Degustación de comida típica con menú y precios.","Adivinen el ingrediente principal del platillo.","Food stop",  "Traditional food tasting with menu and prices.","Guess the main ingredient of the dish.",0,1,0],
+["Teatro Nacional",25,"Arte, arquitectura y agenda cultural.","Descubran un detalle de la arquitectura y fotografíenlo.","National Theater","Art, architecture and cultural agenda.","Spot an architectural detail and photograph it.",0,1,0],
+["BINAES y librería local",25,"Libros, arte y fotografía salvadoreña.","Elijan un libro o arte local para regalar.","BINAES and local bookshop","Books, art and Salvadoran photography.","Pick a local book or artwork as a gift.",0,1,0],
+["Dulces típicos y café",25,"Taller corto de dulces, reseña y recuerdos.","Voten cuál es el dulce favorito de la familia.","Sweets and coffee","Short sweets workshop, review and souvenirs.","Vote for the family's favorite sweet.",0,1,1]];
+var A=['<rect x="14" y="40" width="92" height="30" fill="#f1e6c6"/><polygon points="10,40 60,16 110,40" fill="#c9972b"/><g fill="#12264a"><rect x="24" y="46" width="8" height="24"/><rect x="44" y="46" width="8" height="24"/><rect x="64" y="46" width="8" height="24"/><rect x="84" y="46" width="8" height="24"/></g>',
+'<rect x="22" y="26" width="22" height="44" fill="#e9dcb3"/><rect x="76" y="26" width="22" height="44" fill="#e9dcb3"/><rect x="44" y="40" width="32" height="30" fill="#d8c88d"/><circle cx="60" cy="34" r="12" fill="#c9972b"/><polygon points="22,26 33,10 44,26" fill="#c9972b"/><polygon points="76,26 87,10 98,26" fill="#c9972b"/>',
+'<circle cx="60" cy="46" r="26" fill="#fff"/><circle cx="60" cy="46" r="16" fill="#e8b4a0"/><circle cx="52" cy="42" r="4" fill="#c97b5a"/><circle cx="68" cy="50" r="4" fill="#6aa84f"/>',
+'<rect x="18" y="38" width="84" height="32" fill="#d8c88d"/><polygon points="12,38 60,14 108,38" fill="#c9972b"/><path d="M48 70 V52 Q60 40 72 52 V70Z" fill="#12264a"/><g fill="#12264a"><rect x="24" y="44" width="6" height="26"/><rect x="90" y="44" width="6" height="26"/></g>',
+'<rect x="24" y="24" width="14" height="46" fill="#c0392b"/><rect x="40" y="30" width="14" height="40" fill="#2a4d8a"/><rect x="56" y="20" width="14" height="50" fill="#c9972b"/><rect x="72" y="32" width="14" height="38" fill="#6aa84f"/><rect x="88" y="26" width="10" height="44" fill="#8a5a2b"/>',
+'<path d="M30 40 H80 V58 Q80 70 55 70 Q30 70 30 58Z" fill="#fff"/><path d="M80 44 Q96 44 92 56 Q90 60 80 60" stroke="#fff" stroke-width="5" fill="none"/><path d="M45 34 Q50 26 45 18 M60 34 Q65 26 60 18" stroke="#fff" stroke-width="3" fill="none"/>'];
+var BG=['#2a4d8a','#3d6bb3','#c9972b','#1f3d73','#6a3d8a','#a9582b'];
+var en=false,done={};
+function T(es,e){return en?e:es}
+function render(){
+ var h='',m='<line x1="40" y1="55" x2="600" y2="55" stroke="#c9972b" stroke-width="4" stroke-dasharray="8 6"/>';
+ S.forEach(function(s,i){
+  var d=done[i];
+  h+='<div class="card stop"><svg viewBox="0 0 120 110" preserveAspectRatio="xMidYMid slice"><rect width="120" height="110" fill="'+BG[i]+'"/><rect y="70" width="120" height="40" fill="rgba(0,0,0,.25)"/><g transform="translate(0,10)">'+A[i]+'</g></svg><div class="pad"><h3>'+(i+1)+'. '+T(s[0],s[4])+'</h3><div class="m">'+s[1]+' min · '+T(s[2],s[5])+'</div><div class="mis"><b>'+T('Misión: ','Mission: ')+'</b>'+T(s[3],s[6])+'</div><button class="stamp'+(d?' done':'')+'" data-i="'+i+'">'+(d?T('✓ Sello ganado','✓ Stamp earned'):T('Escanear QR','Scan QR'))+'</button></div></div>';
+  m+='<circle cx="'+(40+i*112)+'" cy="55" r="18" fill="'+(d?'#c9972b':'#12264a')+'" stroke="#c9972b" stroke-width="3"/><text x="'+(40+i*112)+'" y="61" text-anchor="middle" fill="#fff" font-size="16" font-family="system-ui" font-weight="700">'+(i+1)+'</text><text x="'+(40+i*112)+'" y="96" text-anchor="middle" fill="currentColor" font-size="11" font-family="system-ui">'+T(s[0],s[4]).split(' ')[0]+'</text>';
+ });
+ document.getElementById('stops').innerHTML=h;
+ document.getElementById('map').innerHTML=m;
+ var p='',n=0,e=0,g=0;
+ S.forEach(function(s,i){if(done[i]){n++;e+=s[8];g+=(i==0||i==5)?1:0}p+='<div class="dot'+(done[i]?' on':'')+'">'+(i+1)+'</div>'});
+ document.getElementById('pass').innerHTML=p;
+ document.getElementById('ie').textContent=e;
+ document.getElementById('ig').textContent=g;
+ document.getElementById('impmsg').textContent=n==0?T('Completa la ruta y mira cuánto aportas a la economía local.','Complete the route and see how much you give to the local economy.'):T('Con esta ruta apoyaste a '+e+' emprendedores y '+g+' guías.','With this route you supported '+e+' entrepreneurs and '+g+' guides.');
+ document.getElementById('prize').style.display=n==6?'block':'none';
+ document.querySelectorAll('[data-es]').forEach(function(el){el.innerHTML=en?el.dataset.en:el.dataset.es});
+ document.getElementById('lang').textContent=en?'ES':'EN';
+ document.documentElement.lang=en?'en':'es';
+}
+document.addEventListener('click',function(ev){
+ var t=ev.target;
+ if(t.classList.contains('stamp')){done[t.dataset.i]=!done[t.dataset.i];render()}
+ if(t.id=='lang'){en=!en;render()}
+ if(t.dataset&&t.dataset.b){
+  var b=+t.dataset.b,k=b>=100?3:b>=70?2:1;
+  document.querySelectorAll('.plan button').forEach(function(x){x.classList.toggle('on',x===t)});
+  document.getElementById('rec').textContent=' → '+T('Recomendado: ','Recommended: ')+[T('Express','Express'),T('Familiar Clásico','Classic Family'),T('Ruta Nocturna','Night Route')][k-1];
+  [1,2,3].forEach(function(i){document.getElementById('p'+i).style.outline=i==k?'3px solid #c9972b':'none'});
+ }
+});
+render();
+</script>
+</body>
+</html>
