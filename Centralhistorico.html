@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raíz Central · Ruta Local del Centro Histórico</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1b2145;--mut:#586080;--line:#dde0ec;--ink:#1b2145;--gold:#f5b800;--ok:#0f7c5a;--hero:#1b2145;--herotx:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12152b;--card:#1b2040;--tx:#eef0fa;--mut:#a6abc9;--line:#2d3358;--ok:#4fd1a0;--hero:#232a55}}
+:root[data-theme="dark"]{--bg:#12152b;--card:#1b2040;--tx:#eef0fa;--mut:#a6abc9;--line:#2d3358;--ok:#4fd1a0;--hero:#232a55}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 17px/1.55 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800}h2{font-size:1.7rem;font-weight:700}h3{font-size:1.15rem;font-weight:700}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}
+.bar{max-width:1040px;margin:auto;padding:.6rem 1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.logo{font:800 1.25rem "Bricolage Grotesque",sans-serif}.logo i{font-style:normal;color:var(--gold)}
+nav{display:flex;gap:.25rem;overflow-x:auto;flex:1}
+nav a{padding:.45rem .8rem;border-radius:99px;text-decoration:none;color:var(--mut);font-weight:600;white-space:nowrap}
+nav a[aria-current=page]{background:var(--ink);color:#fff}
+:root[data-theme=dark] nav a[aria-current=page]{background:var(--gold);color:#1b2145}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) nav a[aria-current=page]{background:var(--gold);color:#1b2145}}
+main{max-width:1040px;margin:auto;padding:1.5rem 1rem 3rem}
+.hero{background:var(--hero);color:var(--herotx);border-radius:18px;padding:1.6rem;margin-bottom:1.5rem}
+.hero p{max-width:60ch;color:#d9dcf0;margin:.4rem 0 1rem}
+.btn{display:inline-block;border:0;border-radius:10px;padding:.65rem 1.1rem;font:600 1rem "Source Sans 3",sans-serif;cursor:pointer;background:var(--gold);color:#1b2145;text-decoration:none}
+.btn.alt{background:transparent;border:1.5px solid currentColor;color:inherit}.btn:disabled{opacity:.5;cursor:default}progress{accent-color:var(--gold)}
+.btn:focus-visible,nav a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,circle:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+svg.map{width:100%;height:auto;display:block;margin-top:.5rem}
+svg .st{cursor:pointer}svg .st text{font:700 15px "Bricolage Grotesque",sans-serif;fill:#1b2145;pointer-events:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.mut{color:var(--mut)}.tag{display:inline-block;font-size:.85rem;font-weight:600;padding:.1rem .6rem;border-radius:99px;border:1px solid var(--line);margin:0 .3rem .3rem 0}
+.ok{color:var(--ok);border-color:var(--ok)}
+.price{font:800 2rem "Bricolage Grotesque",sans-serif}
+label{display:block;font-weight:600;margin:.6rem 0 .2rem}
+input,select,textarea{width:100%;padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:end;margin:.5rem 0 1rem}.row>*{flex:1;min-width:150px}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:.55rem .6rem;border-bottom:1px solid var(--line)}th{color:var(--mut);font-size:.9rem}
+.toast{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:.7rem 1.1rem;border-radius:10px;z-index:20;max-width:90vw}
+.tile{aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;justify-content:flex-end;padding:.7rem;color:#fff;font-weight:600}
+.tile b{font-size:2.2rem;line-height:1;margin-bottom:auto}
+footer{max-width:1040px;margin:auto;padding:1rem;color:var(--mut);font-size:.9rem}
+@media(prefers-reduced-motion:no-preference){.toast{animation:in .25s}@keyframes in{from{opacity:0;transform:translate(-50%,8px)}}}
+.tl{display:flex;justify-content:space-between;position:relative;margin:1rem 0 1.2rem;padding:0 4px}
+.tl::before{content:"";position:absolute;left:20px;right:20px;top:17px;border-top:4px dashed var(--gold)}
+.tn{position:relative;display:flex;flex-direction:column;align-items:center;gap:.3rem;font-size:.75rem;color:var(--mut);max-width:70px;text-align:center}
+.tn span{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;border:3px solid var(--gold);display:grid;place-items:center;font:700 1rem "Bricolage Grotesque",sans-serif}
+:root[data-theme=dark] .tn span{background:var(--hero)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .tn span{background:var(--hero)}}
+.sg{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.scard{display:grid;grid-template-columns:130px 1fr;padding:0;overflow:hidden}
+.scard .bd{padding:.9rem 1rem}.scard h3{margin-bottom:.25rem}
+.mis{background:rgba(245,184,0,.16);border-radius:8px;padding:.45rem .6rem;margin:.5rem 0;font-size:.95rem}
+.stampb{border:2px dashed var(--gold);background:transparent;color:var(--tx);border-radius:99px;padding:.3rem .9rem;font:600 .9rem "Source Sans 3",sans-serif;cursor:pointer}
+.stampb.done{background:var(--gold);border-style:solid;color:#1b2145}
+.slot{position:relative;background-size:cover;background-position:center;overflow:hidden;min-height:150px}
+.slot .ph{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:600;text-align:center;padding:.5rem}
+.slot .ph svg{position:absolute;inset:0;width:100%;height:100%}
+.slot.wide{height:130px;border-radius:12px 12px 0 0;margin:-1rem -1rem .8rem;min-height:0}
+.slot.banner{height:200px;border-radius:12px;margin:1rem 0}
+.addf{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.65);color:#fff;border-radius:99px;padding:.2rem .7rem;font-size:.8rem;cursor:pointer;margin:0;font-weight:600}
+.addf input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.noedit .addf,.noedit .vctl{display:none}
+@media(max-width:480px){.scard{grid-template-columns:100px 1fr}}
+nav a .ic,nav a .sh{display:none}
+@media(max-width:720px){
+.bar{flex-wrap:nowrap;gap:.5rem;padding:.5rem 1rem}
+.logo{flex:1}
+.bar .btn{padding:.5rem .75rem;font-size:.9rem}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:6;display:grid;grid-template-columns:repeat(6,1fr);gap:.1rem;flex:none;overflow:visible;background:var(--card);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.08);padding:.3rem .3rem calc(.3rem + env(safe-area-inset-bottom,0px))}
+nav a{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.35rem .1rem;border-radius:12px;font-size:.7rem;line-height:1.1;white-space:nowrap;text-align:center;min-width:0}
+nav a .ic{display:block;font-size:1.3rem;line-height:1}
+nav a .sh{display:block;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+nav a .lg{display:none}
+body{padding-bottom:calc(4.4rem + env(safe-area-inset-bottom,0px))}
+.toast{bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:430px){nav{gap:0;padding-left:.15rem;padding-right:.15rem}nav a{font-size:.64rem;padding:.35rem 0;letter-spacing:-.01em}}
+@media(max-width:360px){nav a{font-size:.6rem}nav a .ic{font-size:1.15rem}}
+</style></head><body>
+<header><div class="bar"><div class="logo">Raíz <i>Central</i></div><nav id="nav" aria-label="Secciones"></nav><button class="btn alt" id="edt" type="button" style="color:var(--tx)">📷 Fotos</button><button class="btn" id="lang" type="button" aria-label="Cambiar idioma">EN</button></div></header>
+<main id="app"></main>
+<footer id="foot">Prototipo académico · Making Marketing 2026 · UJMD | FEEN. Negocios y precios tomados de notas de prensa de octubre de 2026 (elsalvador.com); deben confirmarse con cada negocio. Las guías son ejemplos. Fotos: Wikimedia Commons (varios autores, licencias CC). Contribuye al ODS 8 (metas 8.3, 8.5 y 8.9).</footer>
+<script>
+const $=s=>document.querySelector(s);
+let LANG='es';const FOOT=$('#foot').textContent;
+const EN=[['Prototipo académico · Making Marketing 2026 · UJMD | FEEN. Negocios y precios tomados de notas de prensa de octubre de 2026 (elsalvador.com); deben confirmarse con cada negocio. Las guías son ejemplos. Fotos: Wikimedia Commons (varios autores, licencias CC). Contribuye al ODS 8 (metas 8.3, 8.5 y 8.9).','Academic prototype · Making Marketing 2026 · UJMD | FEEN. Businesses and prices taken from October 2026 press reports (elsalvador.com); to be confirmed with each business. Guides are examples. Photos: Wikimedia Commons (various authors, CC licenses). Contributes to SDG 8 (targets 8.3, 8.5 and 8.9).'],
+['Inicio','Home'],['Pasaporte','Passport'],['Comparador','Compare'],['Guías','Guides'],['Comunidad','Community'],['Para negocios','For businesses'],
+['Camina la historia, consume lo nuestro','Walk the history, buy local'],['Una ruta de seis paradas por el Centro Histórico de San Salvador que une patrimonio con negocios, guías y experiencias locales. Toca una parada para ver qué te espera.','A six-stop route through the Historic Center of San Salvador that links heritage with local businesses, guides and experiences. Tap a stop to see what awaits you.'],
+['Armar mi ruta','Build my route'],['Comparar precios','Compare prices'],['Mi pasaporte','My passport'],['Mapa esquemático de la ruta con seis paradas','Schematic route map with six stops'],['Parada ','Stop '],
+['Verificado','Verified'],[' min',' min'],['Actor local: ','Local partner: '],[' · Precio: ',' · Price: '],['Cómo llegar','Get directions'],
+['Palacio Nacional','National Palace'],['Catedral y Plaza Gerardo Barrios','Cathedral and Gerardo Barrios Plaza'],['Parada gastronómica','Food stop'],['Teatro Nacional','National Theater'],['BINAES y arte local','BINAES and local art'],['Dulces típicos y café','Traditional sweets and coffee'],
+['Punto de encuentro. Historia del edificio, video de bienvenida y activación del pase digital.','Meeting point. Building history, welcome video and digital pass activation.'],['Patrimonio y vida de plaza. Mini reto fotográfico con #RaízCentral.','Heritage and plaza life. Mini photo challenge with #RaízCentral.'],['Degustación de comida típica. Menú y precios visibles al escanear el QR.','Traditional food tasting. Menu and prices visible when you scan the QR.'],['Arte y arquitectura. Agenda de conciertos y eventos nocturnos.','Art and architecture. Concerts and night events calendar.'],['Lectura, libros y arte. Catálogo de productos de creadores locales.','Reading, books and art. Catalog of products by local creators.'],['Cierre con dulces, café y un taller corto. Sello final y reseña.','Finish with sweets, coffee and a short workshop. Final stamp and review.'],
+['Guía bilingüe','Bilingual guide'],['Guía y artistas locales','Guide and local artists'],['Teatro y agrupaciones','Theater and performing groups'],['[Emprendimiento 1]','[Business 1]'],['[Emprendimiento 4]','[Business 4]'],['[Emprendimientos 2 y 3]','[Businesses 2 and 3]'],
+['Gratis con el pase','Free with the pass'],['Platillos desde $1.25','Dishes from $1.25'],['Eventos desde $5','Events from $5'],['Libros y arte desde $3','Books and art from $3'],['Dulces y café desde $1.25','Sweets and coffee from $1.25'],
+['Historia','History'],['Comida','Food'],['Cultura','Culture'],['Dulces','Sweets'],['Café','Coffee'],['Arte','Art'],
+['Pases accesibles','Affordable passes'],['La más elegida','Most popular'],['Ruta Express','Express Route'],['Ruta Clásica','Classic Route'],['Ruta Nocturna','Night Route'],['Menos de 2 horas','Under 2 hours'],['2 a 4 horas','2 to 4 hours'],['Noche, evento especial','Night, special event'],['3 paradas','3 stops'],['1 degustación','1 tasting'],['Mapa y QR en cada parada','Map and QR at every stop'],['6 paradas','6 stops'],['Degustaciones y taller corto','Tastings and a short workshop'],['Guía en grupo','Group guide'],['Evento cultural','Cultural event'],['Cena típica','Traditional dinner'],['por persona','per person'],
+['Reserva tu pase','Book your pass'],['Personas','People'],['Fecha','Date'],['Tu nombre','Your name'],['Pase','Pass'],
+['Paquetes de $22.90 a $34.90 por grupo de hasta 4 personas. Estudiantes: pregunta por la tarifa especial.','Packages from $22.90 to $34.90 per group of up to 4 people. Students: ask about the special rate.'],[' en total (',' total ('],['Reservar','Book'],
+['Reserva demo enviada','Demo booking sent'],['. Te llegará el código QR por WhatsApp.','. Your QR code will arrive by WhatsApp.'],['Reserva de ',' Booking for '],[' confirmada (demo).',' confirmed (demo).'],
+['Seguridad primero','Safety first'],['Negocios y guías verificados, puntos de encuentro definidos y contacto de ayuda durante toda la ruta.','Verified businesses and guides, set meeting points and a help contact throughout the route.'],['Cada parada, un QR','One QR at every stop'],['Escanéalo para ver historia, menú, precios, promociones y videos de recomendación.','Scan it to see history, menus, prices, promotions and recommendation videos.'],['Compras que ayudan','Purchases that help'],['Tu gasto llega a emprendedores, artesanos y guías de la zona. Es nuestro aporte al ODS 8: trabajo decente y crecimiento económico.','Your spending reaches entrepreneurs, artisans and guides in the area. It is our contribution to SDG 8: decent work and economic growth.'],['Por qué Raíz Central','Why Raíz Central'],
+['Contador de impacto','Impact counter'],['Con cada reserva apoyas a emprendedores y guías de la zona (ODS 8, metas 8.3, 8.5 y 8.9). Estimación demo: se asume que el 80% del pase llega a aliados locales.','Every booking supports entrepreneurs and guides in the area (SDG 8, targets 8.3, 8.5 and 8.9). Demo estimate: 80% of the pass is assumed to reach local partners.'],['Pases reservados (demo)','Passes booked (demo)'],['Llegan a negocios y guías locales (estimado)','Reaching local businesses and guides (estimate)'],['Emprendimientos aliados (meta del piloto)','Partner businesses (pilot goal)'],['Guías con ingreso en esta sesión','Guides earning in this session'],
+['Tu pasaporte Raíz Central','Your Raíz Central passport'],['Escanea el QR de cada parada para ganar un sello y cumple la misión familiar para sumar puntos. Los 6 sellos desbloquean un premio.','Scan the QR at each stop to earn a stamp and complete the family mission to earn points. All 6 stamps unlock a prize.'],['Tu progreso: ','Your progress: '],[' de 6 sellos · ',' of 6 stamps · '],[' puntos',' points'],['¡Premio desbloqueado! Muestra esta pantalla y recibe un café o dulce típico gratis, más un descuento para volver.','Prize unlocked! Show this screen and get a free coffee or traditional sweet, plus a discount to come back.'],['Completa los 6 sellos para desbloquear un café o dulce típico gratis y un descuento para volver.','Collect all 6 stamps to unlock a free coffee or traditional sweet and a discount to come back.'],['Sello obtenido (demo).','Stamp earned (demo).'],['Sello obtenido','Stamp earned'],['Sin sello','No stamp'],['Sello listo','Stamp done'],['Escanear QR (demo)','Scan QR (demo)'],['Misión familiar: ','Family mission: '],['Misión cumplida: +1 punto.','Mission complete: +1 point.'],['Misión cumplida','Mission complete'],['Cumplí la misión','I did the mission'],
+['Toma una foto familiar frente al Palacio Nacional y compártela con #RaízCentral.','Take a family photo in front of the National Palace and share it with #RaízCentral.'],['Elige un detalle de la fachada que te llame la atención y descríbelo en una frase.','Pick a facade detail that catches your eye and describe it in one sentence.'],['Prueba un platillo que nunca hayas comido y califícalo del 1 al 5.','Try a dish you have never eaten and rate it from 1 to 5.'],['Busca en la agenda un evento al que te gustaría volver.','Find an event in the calendar you would like to come back for.'],['Elige un libro o una obra de arte local y cuenta por qué la elegiste.','Pick a local book or artwork and say why you chose it.'],['Prueba un dulce típico y adivina con qué está hecho.','Try a traditional sweet and guess what it is made of.'],
+['Compara precios antes de decidir','Compare prices before you decide'],['Los negocios publican su menú y sus precios. Tú eliges con información clara. Precios publicados en octubre de 2026; confírmalos en el local.','Businesses publish their menus and prices. You choose with clear information. Prices published in October 2026; confirm them on site.'],['Categoría','Category'],['Ordenar por','Sort by'],['Todas','All'],['Precio: menor a mayor','Price: low to high'],['Producto: A a Z','Product: A to Z'],['Producto o platillo','Product or dish'],['Producto','Product'],['Negocio demo ','Demo business '],['Negocio','Business'],['Precio (USD)','Price (USD)'],['Precio','Price'],['Promoción (opcional)','Promotion (optional)'],['Promoción: ','Promotion: '],['Promoción','Promotion'],['Mejor precio','Best price'],['Mejor calificación','Best rating'],
+['Yuca frita con chicharrón','Fried cassava with pork rind'],['Tamal con café','Tamal with coffee'],['Canasta de dulces típicos','Basket of traditional sweets'],['Café de altura','Highland coffee'],['Artesanía pequeña','Small handicraft'],['Libro de autor local','Local author book'],['2x1 los domingos','2x1 on Sundays'],['Café gratis con la ruta','Free coffee with the route'],['Descuento por QR','QR discount'],
+['Guías locales, disponibles y a buen precio','Local guides, available and fairly priced'],['Elige entre las guías disponibles, compara calificación y precio. Cada reserva genera ingresos para jóvenes y guías de la zona. Máximo $25 por persona.','Choose among available guides and compare rating and price. Every booking creates income for young people and guides in the area. Maximum $25 per person.'],['Solo guías en inglés','English-speaking guides only'],['Guía demo ','Demo guide '],['Español · Inglés · Francés','Spanish · English · French'],['Español · Inglés','Spanish · English'],['Español','Spanish'],['Disponible hoy','Available today'],['No disponible','Not available'],['Sin cupo','Full'],
+['Comunidad Raíz Central','Raíz Central community'],['Fotos, videos y reseñas de visitantes reales. Etiqueta al negocio con @ y usa #RaízCentral.','Photos, videos and reviews from real visitors. Tag the business with @ and use #RaízCentral.'],['Comparte tu experiencia','Share your experience'],['Etiqueta al negocio','Tag the business'],['Texto','Text'],['Cuenta tu experiencia','Tell us about your experience'],['Publicar en mi ficha','Publish to my profile'],['Publicar','Post'],['En la versión final podrás subir fotos y videos, y tus publicaciones en Instagram y TikTok con #RaízCentral aparecerán aquí.','In the final version you will be able to upload photos and videos, and your Instagram and TikTok posts with #RaízCentral will appear here.'],['Escribe un texto para publicar.','Write some text to post.'],['Publicado en la comunidad.','Posted to the community.'],['Videos de recomendación','Recommendation videos'],['Aquí se mostrará un video corto de 30 segundos por parada, grabado con los propios negocios.','A short 30-second video per stop, recorded with the businesses themselves, will be shown here.'],
+['Tarde de sábado en familia','Saturday afternoon with the family'],['Pupusas después del Teatro','Pupusas after the theater'],['Café y libros en la BINAES','Coffee and books at BINAES'],['Foto en el Palacio','Photo at the Palace'],['Dulces para llevar','Sweets to go'],['Noche cultural','Cultural night'],
+['Publica tu negocio gratis','List your business for free'],['Completa los campos y aparecerás en el mapa y en el comparador de precios. No necesitas sitio web propio.','Fill in the fields and you will appear on the map and in the price comparison. You do not need your own website.'],['Nombre del negocio','Business name'],['Nombre','Name'],['Horario: ','Hours: '],['Horario','Hours'],['por definir','to be defined'],['Ej. Sáb y dom 10:00–18:00','E.g. Sat and Sun 10:00–18:00'],['Así te verán los visitantes','How visitors will see you'],['Tu negocio','Your business'],['Tu producto','Your product'],['Completa nombre, producto y precio.','Fill in name, product and price.'],['Publicado. Míralo en el comparador.','Posted. See it in the comparison page.']];
+EN.sort((a,b)=>b[0].length-a[0].length);
+const tr=s=>{if(LANG!=='en'||typeof s!=='string')return s;for(const[a,b]of EN)if(s.includes(a))s=s.split(a).join(b);return s};
+function h(t,a={},...k){const e=document.createElement(t);for(const[x,v]of Object.entries(a)){if(v===false||v==null)continue;if(x==='class')e.className=v;else if(x.startsWith('on'))e.addEventListener(x.slice(2),v);else e.setAttribute(x,(x==='placeholder'||x==='aria-label')?tr(v):v)}k.flat().forEach(c=>e.append(c instanceof Node?c:document.createTextNode(tr(c??''))));return e}
+const money=n=>n==null?TT('Por confirmar','To be confirmed'):'$'+n.toFixed(2);
+function toast(m){const t=h('div',{class:'toast',role:'status'},m);document.body.append(t);setTimeout(()=>t.remove(),3200)}
+/* ===== FOTOS: pega aquí la URL (https://...) o un data:image/... de cada foto. Vacío = ilustración y botón "+ Foto". ===== */
+const IMG={"hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Centro%20Hist%C3%B3rico%20de%20San%20Salvador%2C%20El%20Salvador.JPG?width=1400", "stops": ["https://commons.wikimedia.org/wiki/Special:FilePath/El%20Palacio%20Nacional%20de%20San%20Salvador.JPG?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Catedral%20Metropolitana%20de%20San%20Salvador%2C%20El%20Salvador.jpg?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Pupusas%20El%20Salvador%20Centro%20America.JPG?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Teatro%20Nacional%2C%20San%20Salvador.jpg?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Vista%20a%C3%A9rea%20de%20Biblioteca%20Nacional%20de%20El%20Salvador.jpg?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Dulce%20de%20Panela.jpg?width=900"], "pases": ["https://commons.wikimedia.org/wiki/Special:FilePath/Palacio%20Nacional%20visto%20desde%20Plaza%20General%20Gerardo%20Barrios.jpg?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Pupusas%2C%20Salvadore%C3%B1as%2C%20para%20llevar.jpg?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Teatro%20Nacional%20de%20San%20Salvador.JPG?width=900"], "pg": {"pasaporte": "https://commons.wikimedia.org/wiki/Special:FilePath/Palacio%20Nacional%20de%20El%20Salvador.JPG?width=1400", "comparador": "https://commons.wikimedia.org/wiki/Special:FilePath/Pupusas%2C%20Salvadore%C3%B1as%2C%20para%20llevar.jpg?width=1400", "guias": "https://commons.wikimedia.org/wiki/Special:FilePath/Monumento%20a%20Gerardo%20Barrios%20en%20el%20Centro%20Historico%20de%20San%20Salvador.JPG?width=1400", "comunidad": "https://commons.wikimedia.org/wiki/Special:FilePath/San%20Salvador%20downtown.jpg?width=1400", "negocios": "https://commons.wikimedia.org/wiki/Special:FilePath/Pupuseria%20in%20Stgo%20Texacuangos%20dpto%20San%20Salvador%20El%20Salvador.jpg?width=1400"}, "cat": ["https://commons.wikimedia.org/wiki/Special:FilePath/Pupusas%20El%20Salvador%20Centro%20America.JPG?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Dulce%20de%20Panela.jpg?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/ElSalvadorfairtradecoffee.jpg?width=900", "https://commons.wikimedia.org/wiki/Special:FilePath/Sal%C3%B3n%20tem%C3%A1tico%20de%20la%20Biblioteca%20Nacional%20de%20El%20Salvador.jpg?width=900"], "guias": ["", "", "", ""], "biz": "https://commons.wikimedia.org/wiki/Special:FilePath/Pupuseria%20in%20Stgo%20Texacuangos%20dpto%20San%20Salvador%20El%20Salvador.jpg?width=900"};
+const UP={};
+const ART=['<rect x="14" y="40" width="92" height="30" fill="#f1e6c6"/><polygon points="10,40 60,16 110,40" fill="#c9972b"/><g fill="#12264a"><rect x="24" y="46" width="8" height="24"/><rect x="44" y="46" width="8" height="24"/><rect x="64" y="46" width="8" height="24"/><rect x="84" y="46" width="8" height="24"/></g>',
+'<rect x="22" y="26" width="22" height="44" fill="#e9dcb3"/><rect x="76" y="26" width="22" height="44" fill="#e9dcb3"/><rect x="44" y="40" width="32" height="30" fill="#d8c88d"/><circle cx="60" cy="34" r="12" fill="#c9972b"/><polygon points="22,26 33,10 44,26" fill="#c9972b"/><polygon points="76,26 87,10 98,26" fill="#c9972b"/>',
+'<circle cx="60" cy="46" r="26" fill="#fff"/><circle cx="60" cy="46" r="16" fill="#e8b4a0"/><circle cx="52" cy="42" r="4" fill="#c97b5a"/><circle cx="68" cy="50" r="4" fill="#6aa84f"/>',
+'<rect x="18" y="38" width="84" height="32" fill="#d8c88d"/><polygon points="12,38 60,14 108,38" fill="#c9972b"/><path d="M48 70 V52 Q60 40 72 52 V70Z" fill="#12264a"/>',
+'<rect x="24" y="24" width="14" height="46" fill="#c0392b"/><rect x="40" y="30" width="14" height="40" fill="#2a4d8a"/><rect x="56" y="20" width="14" height="50" fill="#c9972b"/><rect x="72" y="32" width="14" height="38" fill="#6aa84f"/>',
+'<path d="M30 40 H80 V58 Q80 70 55 70 Q30 70 30 58Z" fill="#fff"/><path d="M80 44 Q96 44 92 56 Q90 60 80 60" stroke="#fff" stroke-width="5" fill="none"/>'];
+const BGC=['#2a4d8a','#3d6bb3','#c9972b','#1f3d73','#6a3d8a','#a9582b'];
+function slot(key,url,cls,art,bg){
+ const box=h('div',{class:'slot '+cls,style:'background-color:'+bg});
+ const ph=h('div',{class:'ph'});ph.innerHTML=art?'<svg viewBox="0 0 120 100" preserveAspectRatio="xMidYMid slice"><g transform="translate(0,8)">'+art+'</g></svg>':'<span>'+tr('Foto aquí')+'</span>';
+ const inp=h('input',{type:'file',accept:'image/*','aria-label':'Agregar foto'});
+ const show=u=>{box.style.backgroundImage=u?'url("'+u+'")':'none';ph.style.display=u?'none':'block'};
+ inp.onchange=()=>{const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{UP[key]=r.result;show(r.result)};r.readAsDataURL(f)};
+ show(UP[key]||url);box.append(ph,h('label',{class:'addf'},tr('+ Foto'),inp));return box}
+EN.push(['Las 6 paradas','The 6 stops'],['Paquetes por grupo','Group packages'],[' · por grupo de hasta 4 personas',' · per group of up to 4 people'],['Foto aquí','Photo here'],['+ Foto','+ Photo'],['✓ Sello ganado','✓ Stamp earned'],['Misión: ','Mission: '],[' por grupo',' per group'],['Personas en el grupo','People in the group'],['Un solo precio por grupo de hasta 4 personas, desde $22.90 hasta $34.90. Cada persona adicional suma el 20 % del paquete. Estudiantes: pregunta por la tarifa especial.','One price per group of up to 4 people, from $22.90 to $34.90. Each extra person adds 20% of the package price. Students: ask about the special rate.'],['Cada parada tiene un QR, una misión para la familia y un sello.','Every stop has a QR, a family mission and a stamp.'],['📷 Fotos','📷 Photos'],['por persona','per person']);
+function stopCards(){
+ const tl=h('div',{class:'tl'},STOPS.map((s,i)=>h('div',{class:'tn'},h('span',{},i+1),h('small',{},s.n.split(' ')[0]))));
+ const g=h('div',{class:'grid sg'},STOPS.map((s,i)=>{const x=STAMP[i];
+  const b=h('button',{class:'stampb'+(x.s?' done':''),type:'button',onclick:()=>{x.s=1;b.className='stampb done';b.textContent=tr('✓ Sello ganado');toast(STAMP.every(y=>y.s)?'¡Ruta completa! Ve a «Pasaporte» para compartir tu insignia.':'Sello obtenido (demo).')}},x.s?tr('✓ Sello ganado'):'Escanear QR');
+  return h('div',{class:'card scard'},slot('s'+i,IMG.stops[i],'',ART[i],BGC[i]),h('div',{class:'bd'},h('h3',{},`${i+1}. ${s.n}`),h('p',{class:'mut',style:'margin:0'},`${s.t} min · ${s.k}`),h('p',{style:'margin:.3rem 0'},s.d),h('div',{class:'mis'},h('b',{},'Misión: '),MISS[i]),b))}));
+ return[h('h2',{style:'margin-top:1.5rem'},'Las 6 paradas'),h('p',{class:'mut'},'Cada parada tiene un QR, una misión para la familia y un sello.'),tl,g]}
+const STOPS=[
+{n:'Palacio Nacional',t:20,k:'Historia',x:60,y:230,d:'Punto de encuentro. Historia del edificio, video de bienvenida y activación del pase digital.',who:'Guía bilingüe',p:'Gratis con el pase',q:'Palacio Nacional San Salvador'},
+{n:'Catedral y Plaza Gerardo Barrios',t:25,k:'Historia',x:165,y:120,d:'Patrimonio y vida de plaza. Mini reto fotográfico con #RaízCentral.',who:'Guía y artistas locales',p:'Gratis con el pase',q:'Catedral Metropolitana San Salvador'},
+{n:'Pupusas en Plaza Barrios',t:30,k:'Comida',x:275,y:200,d:'Degustación de pupusas en Kuscatán (Plaza Gerardo Barrios) o en Pupusería Francos (Plaza Libertad). Menú y precios visibles al escanear el QR.',who:'Kuscatán · Pupusería Francos',p:'Pupusas desde $0.95',q:'Plaza Gerardo Barrios San Salvador'},
+{n:'Teatro Nacional',t:25,k:'Cultura',x:385,y:90,d:'Arte y arquitectura. Agenda de conciertos y eventos nocturnos.',who:'Teatro y agrupaciones',p:'Eventos desde $5',q:'Teatro Nacional San Salvador'},
+{n:'BINAES y La Biblioteca Café',t:25,k:'Cultura',x:500,y:175,d:'Lectura, libros y arte en la Biblioteca Nacional; pausa en La Biblioteca Café (nivel 1).',who:'La Biblioteca Café (BINAES)',p:'Entrada libre a la BINAES',q:'Biblioteca Nacional de El Salvador BINAES'},
+{n:'Dulces típicos y café',t:25,k:'Comida',x:590,y:60,d:'Cierre con dulces típicos y artesanías del Mercado Ex Cuartel y café salvadoreño en Ikatú Centro Histórico. Sello final y reseña.',who:'Mercado Ex Cuartel · Ikatú',p:'Precios por confirmar',q:'Mercado Ex Cuartel San Salvador'}];
+const PASES=[{n:'Ruta Express',t:'Menos de 2 horas',p:22.9,i:['3 paradas','1 degustación','Mapa y QR en cada parada']},
+{n:'Ruta Clásica',t:'2 a 4 horas',p:27.9,i:['6 paradas','Degustaciones y taller corto','Guía en grupo'],hot:1},
+{n:'Ruta Nocturna',t:'Noche, evento especial',p:34.9,i:['Evento cultural','Cena típica','Guía bilingüe']}];
+let ITEMS=[{"c": "Comida", "i": "Pupusa revuelta", "b": "Pupusería Francos (Plaza Libertad)", "p": 1.1, "o": ""}, {"c": "Comida", "i": "Pupusa revuelta", "b": "Kuscatán (Plaza Gerardo Barrios)", "p": 1.5, "o": ""}, {"c": "Comida", "i": "Pupusa revuelta", "b": "Pipirisnais (Calle Delgado)", "p": 1.5, "o": ""}, {"c": "Comida", "i": "Pupusa de frijol con queso", "b": "Pupusería Francos (Plaza Libertad)", "p": 0.95, "o": ""}, {"c": "Comida", "i": "Pupusa de queso", "b": "Kuscatán (Plaza Gerardo Barrios)", "p": 1.75, "o": ""}, {"c": "Comida", "i": "Pupusa de queso con loroco (maíz)", "b": "Pipirisnais (Calle Delgado)", "p": 2.0, "o": ""}, {"c": "Comida", "i": "Buffet típico (comida y bebida)", "b": "Pueblo Viejo Centro Histórico", "p": 10.99, "o": "Buffet extendido todo el día por $10.99"}, {"c": "Comida", "i": "Sopa típica con bebida", "b": "Pueblo Viejo Centro Histórico", "p": 6.5, "o": "Bebida incluida (frijoles, gallina, pata o tortilla)"}, {"c": "Dulces", "i": "Dulces típicos", "b": "Mercado Ex Cuartel", "p": null, "o": ""}, {"c": "Café", "i": "Café salvadoreño y antojitos", "b": "Ikatú Centro Histórico", "p": null, "o": ""}, {"c": "Café", "i": "Café", "b": "La Biblioteca Café (BINAES)", "p": null, "o": ""}, {"c": "Arte", "i": "Artesanías y ropa típica", "b": "Mercado Ex Cuartel", "p": null, "o": ""}];
+const GUIAS=[{n:'Guía demo 1',l:'Español · Inglés',r:4.9,p:15,on:1,v:1},{n:'Guía demo 2',l:'Español · Inglés',r:4.7,p:12,on:1,v:1},{n:'Guía demo 3',l:'Español',r:4.8,p:9,on:1,v:1},{n:'Guía demo 4',l:'Español · Inglés · Francés',r:4.6,p:20,on:0,v:1}];
+let POSTS=[['🏛️','Tarde de sábado en familia','@negocio_demo'],['🫓','Pupusas después del Teatro','@negocio_demo'],['☕','Café y libros en la BINAES','@negocio_demo'],['📸','Foto en el Palacio','@guia_demo'],['🍬','Dulces para llevar','@negocio_demo'],['🎭','Noche cultural','@teatro_demo']];
+const VIEWS={inicio:'Inicio',pasaporte:'Pasaporte',comparador:'Comparador',guias:'Guías',comunidad:'Comunidad',negocios:'Para negocios'};
+const NAVI={inicio:['🏠','Inicio'],pasaporte:['🎫','Pasaporte'],comparador:['💲','Precios'],guias:['🧭','Guías'],comunidad:['📸','Comunidad'],negocios:['🏪','Negocio']};
+EN.push(['Precios','Prices']);
+function nav(v){const n=$('#nav');n.replaceChildren(...Object.entries(VIEWS).map(([k,t])=>{const a=h('a',{href:'#'+k,'aria-label':t},h('span',{class:'ic','aria-hidden':'true'},NAVI[k][0]),h('span',{class:'lg'},t),h('span',{class:'sh'},NAVI[k][1]));if(k===v)a.setAttribute('aria-current','page');return a}))}
+
+const VIDEO={url:'https://www.youtube.com/watch?v=xO7votWQrXw'}; /* Pega aquí un enlace de YouTube, Vimeo o un .mp4 */
+EN.push(['Video de bienvenida','Welcome video'],['Recorre en video el Centro Histórico de San Salvador antes de visitarlo.','Take a video tour of San Salvador’s Historic Center before you visit.'],['Agrega aquí tu video','Add your video here'],['Pega un enlace','Paste a link'],['Usar enlace','Use link'],['Subir video','Upload video']);
+function videoBlock(){
+ const box=h('div',{style:'aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#1b2145;position:relative;display:grid;place-items:center;color:#fff;text-align:center'});
+ const play=u=>{box.replaceChildren();let m;const yt=u.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/),vm=u.match(/vimeo\.com\/(\d+)/);let e;
+  if(yt||vm){e=document.createElement('iframe');e.src=yt?'https://www.youtube.com/embed/'+yt[1]:'https://player.vimeo.com/video/'+vm[1];e.allowFullscreen=true;e.title='Video';e.setAttribute('allow','autoplay; fullscreen; picture-in-picture')}
+  else{e=document.createElement('video');e.src=u;e.controls=true;e.playsInline=true}
+  e.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0';box.append(e)};
+ const ph=()=>{box.replaceChildren(h('div',{style:'padding:1rem'},h('div',{style:'font-size:3rem;line-height:1'},'▶'),h('p',{},'Agrega aquí tu video')))};
+ if(VIDEO.url)play(VIDEO.url);else ph();
+ const url=h('input',{type:'text',placeholder:'Pega un enlace','aria-label':'Pega un enlace'});
+ const fi=h('input',{type:'file',accept:'video/*',style:'display:none'});fi.onchange=()=>{const f=fi.files[0];if(f)play(URL.createObjectURL(f))};
+ const ctl=h('div',{class:'row vctl'},h('div',{},url),h('button',{class:'btn',type:'button',onclick:()=>{if(url.value.trim())play(url.value.trim())}},'Usar enlace'),h('button',{class:'btn alt',type:'button',style:'color:var(--tx)',onclick:()=>fi.click()},'Subir video'),fi);
+ return h('div',{style:'margin-top:1.5rem'},h('h2',{},'Video de bienvenida'),h('p',{class:'mut'},'Recorre en video el Centro Histórico de San Salvador antes de visitarlo.'),box,ctl)}
+const TT=(a,b)=>LANG==='en'?b:a;
+const TOURS=[{d:['Domingo · 10:00 a. m.','Sunday · 10:00 a.m.'],p:2.9,cap:12,t:5},{d:['Domingo · 3:00 p. m.','Sunday · 3:00 p.m.'],p:3.9,cap:12,t:9},{d:['Sábado · 3:00 p. m.','Saturday · 3:00 p.m.'],p:4.9,cap:12,t:11}];
+const TMIN=6;
+EN.push(['Reservar cupos','Reserve spots'],['Lleno · lista de espera','Full · waitlist'],['por persona · guía incluida','per person · guide included'],['Salida confirmada','Departure confirmed']);
+function tourCard(i){
+ const x=TOURS[i],left=x.cap-x.t;
+ const n=h('input',{type:'number',min:1,max:Math.max(1,Math.min(4,left)),value:1,'aria-label':'Personas',style:'max-width:90px'});
+ const bt=h('button',{class:'stampb',type:'button',disabled:left<=0,onclick:()=>{const k=Math.min(Math.max(1,+n.value||1),left);x.t+=k;IMP.pases+=k;IMP.local+=k*x.p*0.8;updImpact();toast(TT(k+' cupo(s) reservados (demo).',k+' spot(s) reserved (demo).'));card.replaceWith(tourCard(i))}},left>0?'Reservar cupos':'Lleno · lista de espera');
+ const card=h('div',{class:'card'},slot('t'+i,'','wide',ART[[0,1,3][i]],BGC[[1,2,4][i]]),h('h3',{},TT(x.d[0],x.d[1])),h('div',{class:'price'},money(x.p)),h('p',{class:'mut',style:'margin:0 0 .5rem'},'por persona · guía incluida'),h('progress',{value:x.t,max:x.cap,style:'width:100%;height:12px'}),h('p',{class:'mut',style:'margin:.3rem 0'},left>0?TT('Quedan '+left+' de '+x.cap+' cupos','Only '+left+' of '+x.cap+' spots left'):TT('Cupos agotados','Sold out')),x.t>=TMIN?h('span',{class:'tag ok'},'Salida confirmada'):h('span',{class:'tag'},TT('Faltan '+(TMIN-x.t)+' para confirmar','Need '+(TMIN-x.t)+' more to confirm')),h('div',{style:'display:flex;gap:.5rem;align-items:center;margin-top:.6rem'},left>0?n:'',bt));
+ return card}
+function publicTours(){return[h('h2',{style:'margin-top:1.5rem'},TT('Tour público con guía','Public guided tour')),h('p',{class:'mut'},TT('Si prefieres no armar un grupo, únete a una salida abierta con guía incluida por $2 a $5 por persona. Se llena por cupos y sale con un mínimo de 6 personas. El precio es más bajo en los horarios con menos demanda.','If you prefer not to form a group, join an open departure with a guide for $2 to $5 per person. It fills by spots and departs with a minimum of 6 people. Prices are lower at off-peak times.')),h('div',{class:'grid'},TOURS.map((x,i)=>tourCard(i)))]}
+function inicio(){
+ const info=h('div',{class:'card',style:'margin-top:1rem',id:'info'});
+ function show(i){const s=STOPS[i];info.replaceChildren(h('h3',{},`${i+1}. ${s.n}`),h('span',{class:'tag'},s.k),h('span',{class:'tag'},`${s.t} min`),h('span',{class:'tag ok'},'Verificado'),h('p',{},s.d),h('p',{class:'mut'},`Actor local: ${s.who} · Precio: ${s.p}`),h('a',{class:'btn',href:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.q),target:'_blank',rel:'noopener'},'Cómo llegar'))}
+ const NS='http://www.w3.org/2000/svg';const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 650 290');svg.setAttribute('class','map');svg.setAttribute('role','img');svg.setAttribute('aria-label','Mapa esquemático de la ruta con seis paradas');
+ const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+ [[0,60,650,40],[0,150,650,150],[0,250,650,230]].forEach(([x,y,w,y2])=>svg.append(mk('line',{x1:0,y1:y,x2:650,y2:y2,stroke:'#fff',opacity:.12,'stroke-width':10})));
+ svg.append(mk('polyline',{points:STOPS.map(s=>s.x+','+s.y).join(' '),fill:'none',stroke:'#f5b800','stroke-width':4,'stroke-dasharray':'2 9','stroke-linecap':'round'}));
+ STOPS.forEach((s,i)=>{const g=mk('g',{class:'st'});const c=mk('circle',{cx:s.x,cy:s.y,r:19,fill:'#f5b800',tabindex:0,role:'button','aria-label':'Parada '+(i+1)+': '+s.n});const tx=mk('text',{x:s.x,y:s.y+5,'text-anchor':'middle'});tx.textContent=i+1;
+  g.append(c,tx);const go=()=>{show(i);svg.querySelectorAll('circle').forEach(z=>z.setAttribute('stroke','none'));c.setAttribute('stroke','#fff');c.setAttribute('stroke-width',4)};g.addEventListener('click',go);c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});svg.append(g)});
+ show(0);
+ const hero=h('section',{class:'hero'},h('h1',{},'Camina la historia, consume lo nuestro'),h('p',{},'Una ruta de seis paradas por el Centro Histórico de San Salvador que une patrimonio con negocios, guías y experiencias locales. Toca una parada para ver qué te espera.'),h('a',{class:'btn',href:'#reservar',onclick:e=>{e.preventDefault();$('#reservar').scrollIntoView({behavior:'smooth'})}},'Armar mi ruta'),' ',h('a',{class:'btn alt',href:'#comparador'},'Comparar precios'),' ',h('a',{class:'btn alt',href:'#pasaporte'},'Mi pasaporte'),slot('hero',IMG.hero,'banner',ART[0],BGC[0]),svg);
+ const pases=PASES.map((p,i)=>h('div',{class:'card'},slot('p'+i,IMG.pases[i],'wide',ART[[2,1,3][i]],BGC[[1,2,4][i]]),p.hot?h('span',{class:'tag ok'},'La más elegida'):'',h('h3',{},p.n),h('div',{class:'price'},money(p.p)),h('p',{class:'mut'},p.t+' · por grupo de hasta 4 personas'),h('p',{class:'mut',style:'margin:0'},'≈ '+money(p.p/4)+' por persona'),h('ul',{},p.i.map(x=>h('li',{},x)))));
+ const form=h('form',{class:'card',onsubmit:e=>{e.preventDefault()}});
+ const sel=h('select',{id:'ps'},PASES.map((p,i)=>h('option',{value:i},`${p.n} · ${money(p.p)} por grupo`)));sel.value=1;
+ const np=h('input',{type:'number',min:1,max:12,value:4,id:'np'});const out=h('p',{class:'price',id:'tot'});
+ const gt=(p,n)=>p*(1+0.2*Math.max(0,n-4));const calc=()=>{const p=PASES[sel.value].p,n=Math.max(1,+np.value||1),tot=gt(p,n);out.textContent=money(tot)+` por el grupo de ${n} (${money(tot/n)} por persona)`};
+ sel.onchange=np.oninput=calc;calc();
+ const nom=h('input',{type:'text',id:'nom',placeholder:'Tu nombre',autocomplete:'name'}),fe=h('input',{type:'date',id:'fe'});
+ form.append(h('h3',{},'Reserva tu pase'),h('div',{class:'row'},h('div',{},h('label',{for:'ps'},'Pase'),sel),h('div',{},h('label',{for:'np'},'Personas en el grupo'),np),h('div',{},h('label',{for:'fe'},'Fecha'),fe),h('div',{},h('label',{for:'nom'},'Nombre'),nom)),h('p',{class:'mut'},'Un solo precio por grupo de hasta 4 personas, desde $22.90 hasta $34.90. Cada persona adicional suma el 20 % del paquete. Estudiantes: pregunta por la tarifa especial.'),out,h('button',{class:'btn',type:'button',onclick:()=>{const n=Math.max(1,+np.value||1),pp=PASES[sel.value].p,tot=gt(pp,n);IMP.pases+=n;IMP.local+=tot*0.8;updImpact();toast(`Reserva demo enviada${nom.value?', '+nom.value:''}. Te llegará el código QR por WhatsApp.`)}},'Reservar'));
+ const seg=h('div',{class:'grid'},h('div',{class:'card'},h('h3',{},'Seguridad primero'),h('p',{},'Negocios y guías verificados, puntos de encuentro definidos y contacto de ayuda durante toda la ruta.')),h('div',{class:'card'},h('h3',{},'Cada parada, un QR'),h('p',{},'Escanéalo para ver historia, menú, precios, promociones y videos de recomendación.')),h('div',{class:'card'},h('h3',{},'Compras que ayudan'),h('p',{},'Tu gasto llega a emprendedores, artesanos y guías de la zona. Es nuestro aporte al ODS 8: trabajo decente y crecimiento económico.')));
+ return[hero,videoBlock(),...stopCards(),...lugares(),h('h2',{style:'margin-top:1.5rem'},'Paquetes por grupo'),h('div',{class:'grid'},pases),...publicTours(),h('div',{id:'reservar',style:'margin:1rem 0'},form),info,h('div',{style:'height:1rem'}),impactCard(),h('h2',{style:'margin-top:1.5rem'},'Por qué Raíz Central'),seg]}
+
+
+const LUGARES=[
+{n:'Pupusería Francos',z:'Plaza Libertad',k:'Pupusas',pr:'Frijol con queso $0.95 · revueltas $1.10',pm:'El precio más bajo de la ruta',img:'PUP',q:'Plaza Libertad San Salvador'},
+{n:'Kuscatán',z:'Plaza Gerardo Barrios',k:'Pupusas',pr:'Revueltas $1.50 · queso $1.75',pm:'Frente a la Catedral, parada 3',img:'PUP2',q:'Plaza Gerardo Barrios San Salvador'},
+{n:'Pipirisnais',z:'Calle Delgado',k:'Pupusas',pr:'Revueltas $1.50 · queso con loroco de maíz $2.00',pm:'',img:'PUP',q:'Calle Delgado San Salvador'},
+{n:'Pueblo Viejo Centro Histórico',z:'Av. Monseñor Óscar A. Romero #211',k:'Comida típica',pr:'Buffet $10.99 por persona · sopas desde $6.50',pm:'Buffet con comida y bebida todo el día por $10.99; sopas con bebida incluida',img:'BUF',q:'Pueblo Viejo Centro Histórico San Salvador'},
+{n:'Ikatú Centro Histórico',z:'1.ª Calle Oriente y Av. España',k:'Desayunos, antojitos y café',pr:'Precios por confirmar',pm:'',img:'CAF',q:'Ikatú Centro Histórico San Salvador'},
+{n:'Mercado Ex Cuartel',z:'Centro Histórico',k:'Dulces típicos y artesanías',pr:'Precios según producto',pm:'',img:'DUL',q:'Mercado Ex Cuartel San Salvador'}];
+EN.push(['Dónde comer en la ruta','Where to eat on the route'],['Negocios reales del Centro Histórico con precios publicados en octubre de 2026. Confírmalos en el local.','Real businesses in the Historic Center with prices published in October 2026. Confirm them on site.'],['Cómo llegar','Directions'],['Promoción: ','Promotion: ']);
+function lugares(){const P={PUP:IMG.stops[2],PUP2:IMG.pases[1],BUF:IMG.cat[0],CAF:IMG.cat[2],DUL:IMG.stops[5]};
+ return[h('h2',{style:'margin-top:1.5rem'},'Dónde comer en la ruta'),h('p',{class:'mut'},'Negocios reales del Centro Histórico con precios publicados en octubre de 2026. Confírmalos en el local.'),
+ h('div',{class:'grid sg'},...LUGARES.map((x,i)=>h('div',{class:'card scard'},slot('l'+i,P[x.img],'',ART[2],BGC[i%6]),h('div',{class:'bd'},h('h3',{},x.n),h('p',{class:'mut',style:'margin:0'},x.k+' · '+x.z),h('p',{style:'margin:.3rem 0'},h('b',{},x.pr)),x.pm?h('div',{class:'mis'},h('b',{},'Promoción: '),x.pm):'',h('a',{class:'stampb',style:'display:inline-block;margin-top:.4rem;text-decoration:none',href:'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(x.q),target:'_blank',rel:'noopener'},'Cómo llegar')))))]}
+function comparador(){
+ const cats=['Todas',...new Set(ITEMS.map(x=>x.c))];
+ const c=h('select',{id:'cat'},cats.map(x=>h('option',{},x))),o=h('select',{id:'ord'},h('option',{value:'p'},'Precio: menor a mayor'),h('option',{value:'i'},'Producto: A a Z'));
+ const body=h('tbody');
+ const draw=()=>{let r=ITEMS.filter(x=>c.value==='Todas'||x.c===c.value);r=[...r].sort((a,b)=>o.value==='p'?(a.p??1e9)-(b.p??1e9):a.i.localeCompare(b.i));
+  const min={};ITEMS.forEach(x=>{if(x.p!=null)min[x.i]=Math.min(min[x.i]??99,x.p)});
+  body.replaceChildren(...r.map(x=>h('tr',{},h('td',{},x.i),h('td',{},x.b),h('td',{},money(x.p),(x.p===min[x.i]&&x.p!=null&&ITEMS.filter(y=>y.i===x.i&&y.p!=null).length>1)?h('span',{class:'tag ok',style:'margin-left:.4rem'},'Mejor precio'):''),h('td',{class:'mut'},x.o||'—'))))};
+ c.onchange=o.onchange=draw;draw();
+ const cc=h('div',{class:'grid sg',style:'margin-bottom:1rem'},['Comida','Dulces','Café','Arte'].map((k,i)=>h('div',{class:'card scard'},slot('c'+i,IMG.cat[i],'',ART[[2,5,5,4][i]],BGC[[2,5,0,4][i]]),h('div',{class:'bd'},h('h3',{},k),h('p',{class:'mut'},ITEMS.filter(x=>x.c===k).length+' opciones'),h('button',{class:'stampb',type:'button',onclick:()=>{c.value=k;draw();body.scrollIntoView({behavior:'smooth',block:'center'})}},'Ver precios')))));
+ return[pageHead('Compara precios antes de decidir','Los negocios publican su menú y sus precios. Tú eliges con información clara. Precios publicados en octubre de 2026; confírmalos en el local.','comparador',2),cc,h('div',{class:'row'},h('div',{},h('label',{for:'cat'},'Categoría'),c),h('div',{},h('label',{for:'ord'},'Ordenar por'),o)),h('div',{class:'scroll card'},h('table',{},h('thead',{},h('tr',{},['Producto','Negocio','Precio','Promoción'].map(x=>h('th',{},x)))),body))]}
+
+function guias(){
+ const o=h('select',{id:'og'},h('option',{value:'p'},'Mejor precio'),h('option',{value:'r'},'Mejor calificación')),l=h('input',{type:'checkbox',id:'ing'}),list=h('div',{class:'grid sg'});
+ const draw=()=>{let g=GUIAS.filter(x=>!l.checked||x.l.includes('Inglés'));g=[...g].sort((a,b)=>o.value==='p'?a.p-b.p:b.r-a.r);
+  list.replaceChildren(...g.map(x=>{const i=GUIAS.indexOf(x);return h('div',{class:'card scard'},slot('g'+i,IMG.guias[i],'',PER,BGC[i%6]),h('div',{class:'bd'},h('h3',{},x.n),h('span',{class:'tag ok'},'Verificado'),h('span',{class:'tag'},x.on?'Disponible hoy':'No disponible'),h('p',{class:'mut',style:'margin:.2rem 0'},x.l),h('p',{style:'margin:.2rem 0 .5rem'},`★ ${x.r} · `,h('b',{},money(x.p)+' por persona')),h('button',{class:'stampb',disabled:!x.on,onclick:()=>{IMP.guias.add(x.n);IMP.local+=x.p;updImpact();toast(`Reserva de ${x.n} confirmada (demo).`)}},x.on?'Reservar':'Sin cupo')))}))};
+ o.onchange=l.onchange=draw;draw();
+ return[pageHead('Guías locales, disponibles y a buen precio','Elige entre las guías disponibles, compara calificación y precio. Cada reserva genera ingresos para jóvenes y guías de la zona. Máximo $25 por persona.','guias',5),h('div',{class:'row'},h('div',{},h('label',{for:'og'},'Ordenar por'),o),h('div',{},h('label',{for:'ing'},'Solo guías en inglés'),l)),list]}
+
+function comunidad(){
+ const g=h('div',{class:'grid sg'});
+ const draw=()=>g.replaceChildren(...POSTS.map((p,i)=>h('div',{class:'card scard'},slot('k'+p[1].slice(0,24),'','',ART[i%6],BGC[i%6]),h('div',{class:'bd'},h('h3',{},p[0]+' '+p[2]),h('p',{style:'margin:.2rem 0'},p[1]),h('span',{class:'tag'},'#RaízCentral')))));draw();
+ const tx=h('input',{type:'text',id:'tx',placeholder:'Cuenta tu experiencia'}),bz=h('input',{type:'text',id:'bz',placeholder:'@negocio'});
+ const f=h('div',{class:'card'},h('h3',{},'Comparte tu experiencia'),h('div',{class:'row'},h('div',{},h('label',{for:'tx'},'Texto'),tx),h('div',{},h('label',{for:'bz'},'Etiqueta al negocio'),bz)),h('button',{class:'btn',onclick:()=>{if(!tx.value.trim()){toast('Escribe un texto para publicar.');return}POSTS.unshift(['📷',tx.value.trim(),bz.value.trim()||'@negocio']);tx.value=bz.value='';draw();toast('Publicado en la comunidad.')}},'Publicar'),h('p',{class:'mut'},'En la versión final podrás subir fotos y videos, y tus publicaciones en Instagram y TikTok con #RaízCentral aparecerán aquí.'));
+ return[pageHead('Comunidad Raíz Central','Fotos, videos y reseñas de visitantes reales. Etiqueta al negocio con @ y usa #RaízCentral.','comunidad',1),f,h('div',{style:'height:1rem'}),g,h('h3',{style:'margin-top:1.5rem'},'Videos de recomendación'),h('p',{class:'mut'},TT('Mira el recorrido antes de ir. En el piloto, cada negocio aliado grabará su propio video de 30 segundos.','Watch the walk before you go. In the pilot, each partner business will record its own 30-second video.')),h('div',{class:'grid'},...[['eXCUVy5JdZw','Caminata por el Centro Histórico (4K, 2025)']].map(([id,t])=>h('div',{class:'card',style:'padding:0;overflow:hidden'},h('iframe',{src:'https://www.youtube.com/embed/'+id,title:t,allowfullscreen:'',loading:'lazy',style:'width:100%;aspect-ratio:16/9;border:0;display:block'}),h('p',{style:'margin:.6rem 1rem'},t))))]}
+
+function negocios(){
+ const f={n:h('input',{id:'bn',placeholder:'Nombre del negocio'}),c:h('select',{id:'bc'},['Comida','Dulces','Café','Arte'].map(x=>h('option',{},x))),i:h('input',{id:'bi',placeholder:'Producto o platillo'}),p:h('input',{id:'bp',type:'number',min:0,step:'0.25',placeholder:'0.00'}),o:h('input',{id:'bo',placeholder:'Promoción (opcional)'}),hr:h('input',{id:'bh',placeholder:'Ej. Sáb y dom 10:00–18:00'})};
+ const pb=h('div'),prev=h('div',{class:'card'},slot('biz',IMG.biz,'wide',ART[2],BGC[3]),pb);
+ const draw=()=>pb.replaceChildren(h('p',{class:'mut'},'Así te verán los visitantes'),h('h3',{},f.n.value||'Tu negocio'),h('span',{class:'tag'},f.c.value),h('span',{class:'tag ok'},'Verificado'),h('p',{},(f.i.value||'Tu producto')+' · ',h('b',{},f.p.value?money(+f.p.value):'$0.00')),f.o.value?h('p',{class:'ok'},'Promoción: '+f.o.value):'',h('p',{class:'mut'},'Horario: '+(f.hr.value||'por definir')));
+ Object.values(f).forEach(e=>e.addEventListener('input',draw));draw();
+ const L=(t,e)=>h('div',{},h('label',{for:e.id},t),e);
+ return[pageHead('Publica tu negocio gratis','Completa los campos y aparecerás en el mapa y en el comparador de precios. No necesitas sitio web propio.','negocios',3),h('div',{class:'grid'},h('div',{class:'card'},L('Nombre',f.n),L('Categoría',f.c),L('Producto o platillo',f.i),L('Precio (USD)',f.p),L('Promoción',f.o),L('Horario',f.hr),h('div',{style:'height:.8rem'}),h('button',{class:'btn',onclick:()=>{if(!f.n.value||!f.i.value||!f.p.value){toast('Completa nombre, producto y precio.');return}ITEMS.push({c:f.c.value,i:f.i.value,b:f.n.value,p:+f.p.value,o:f.o.value});toast('Publicado. Míralo en el comparador.');location.hash='comparador'}},'Publicar en mi ficha')),prev),h('div',{style:'margin-top:1rem'},impactCard())]}
+
+const IMP={pases:0,local:0,guias:new Set()};
+function impactCard(){const st=[[IMP.pases,'Pases reservados (demo)'],[money(IMP.local),'Llegan a negocios y guías locales (estimado)'],[5,'Emprendimientos aliados (meta del piloto)'],[IMP.guias.size+'/3','Guías con ingreso en esta sesión']];
+ return h('div',{class:'card',id:'impact'},h('h3',{},'Contador de impacto'),h('p',{class:'mut'},'Con cada reserva apoyas a emprendedores y guías de la zona (ODS 8, metas 8.3, 8.5 y 8.9). Estimación demo: se asume que el 80% del pase llega a aliados locales.'),h('div',{class:'grid',style:'grid-template-columns:repeat(auto-fit,minmax(150px,1fr))'},st.map(([v,l])=>h('div',{},h('div',{class:'price'},String(v)),h('div',{class:'mut'},l)))))}
+const updImpact=()=>{const e=$('#impact');if(e)e.replaceWith(impactCard())};
+const STAMP=STOPS.map(()=>({s:0,m:0}));
+const MISS=['Toma una foto familiar frente al Palacio Nacional y compártela con #RaízCentral.','Elige un detalle de la fachada que te llame la atención y descríbelo en una frase.','Prueba un platillo que nunca hayas comido y califícalo del 1 al 5.','Busca en la agenda un evento al que te gustaría volver.','Elige un libro o una obra de arte local y cuenta por qué la elegiste.','Prueba un dulce típico y adivina con qué está hecho.'];
+const BADGE={name:''};
+EN.push(['Tu insignia de ruta completada','Your completed-route badge'],['Compártela en Instagram, TikTok, Facebook o WhatsApp con #RaízCentral y etiqueta a los negocios que visitaste.','Share it on Instagram, TikTok, Facebook or WhatsApp with #RaízCentral and tag the businesses you visited.'],['Nombre en la insignia','Name on the badge'],['Tu nombre (opcional)','Your name (optional)'],['Compartir','Share'],['Descargar PNG','Download PNG'],['Copiar texto','Copy text'],['Insignia descargada.','Badge downloaded.'],['Texto copiado.','Text copied.'],['No se pudo compartir; descarga la imagen y súbela a tu red.','Could not share; download the image and upload it to your network.'],['¡Ruta completa! Ve a «Pasaporte» para compartir tu insignia.','Route complete! Go to “Passport” to share your badge.']);
+function drawBadge(name,cv,o){o=o||{};
+ const en=LANG==='en',c=cv.getContext('2d'),W=cv.width=1080,H=cv.height=1080,F='system-ui,"Bricolage Grotesque",sans-serif';
+ const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#1b2145');g.addColorStop(1,'#2d3a7a');c.fillStyle=g;c.fillRect(0,0,W,H);
+ c.strokeStyle=o.col||'#f5b800';c.lineWidth=14;c.strokeRect(36,36,W-72,H-72);
+ c.fillStyle=o.col||'#f5b800';c.beginPath();c.arc(W/2,400,230,0,7);c.fill();
+ for(let i=0;i<6;i++){const a=i*Math.PI/3-Math.PI/2,x=W/2+Math.cos(a)*262,y=400+Math.sin(a)*262;c.fillStyle='#fff';c.beginPath();c.arc(x,y,36,0,7);c.fill();c.fillStyle='#1b2145';c.font='800 38px '+F;c.textAlign='center';c.textBaseline='middle';c.fillText('✓',x,y+2)}
+ c.fillStyle='#1b2145';c.textAlign='center';c.textBaseline='alphabetic';c.font='800 92px '+F;c.fillText('RAÍZ',W/2,395);c.fillText('CENTRAL',W/2,485);
+ c.fillStyle='#fff';c.font='800 '+((o.t||'').length>14?60:74)+'px '+F;c.fillText(o.t||(en?'Route completed!':'¡Ruta completada!'),W/2,760);
+ if(name){c.fillStyle='#f5b800';c.font='700 58px '+F;c.fillText(name.slice(0,28),W/2,835)}
+ c.fillStyle='#dfe3f5';c.font='500 38px '+F;c.fillText(o.s||(en?'6 stops · 6 stamps · San Salvador Historic Center':'6 paradas · 6 sellos · Centro Histórico de San Salvador'),W/2,905);
+ c.fillStyle='#f5b800';c.font='700 44px '+F;c.fillText('#RaízCentral',W/2,985);
+}
+function badgeCard(){
+ const nm=h('input',{type:'text',placeholder:'Tu nombre (opcional)',id:'bnm',value:BADGE.name,maxlength:28});
+ const cv=document.createElement('canvas');cv.style.cssText='width:100%;max-width:340px;border-radius:14px;display:block;margin:.8rem 0';
+ const draw=()=>drawBadge(nm.value.trim(),cv);nm.oninput=()=>{BADGE.name=nm.value;draw()};draw();
+ const txt=()=>LANG==='en'?'I completed the Raíz Central route in San Salvador’s Historic Center! 6 stops, 6 stamps and support for local businesses. #RaízCentral':'¡Completé la ruta Raíz Central por el Centro Histórico de San Salvador! 6 paradas, 6 sellos y apoyo a negocios locales. Camina la historia, consume lo nuestro. #RaízCentral';
+ const blob=()=>new Promise(r=>cv.toBlob(r,'image/png'));
+ const dl=async()=>{const b=await blob();const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='insignia-raiz-central.png';document.body.append(a);a.click();a.remove();toast(tr('Insignia descargada.'))};
+ const sh=async()=>{try{const b=await blob();const f=new File([b],'insignia-raiz-central.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]}))await navigator.share({files:[f],text:txt()});else if(navigator.share)await navigator.share({text:txt()});else await dl()}catch(e){if(!e||e.name!=='AbortError')toast(tr('No se pudo compartir; descarga la imagen y súbela a tu red.'))}};
+ const cp=async()=>{try{await navigator.clipboard.writeText(txt());toast(tr('Texto copiado.'))}catch(e){toast(txt())}};
+ return h('div',{class:'card'},h('h3',{},'Tu insignia de ruta completada'),h('p',{class:'mut'},'Compártela en Instagram, TikTok, Facebook o WhatsApp con #RaízCentral y etiqueta a los negocios que visitaste.'),h('label',{for:'bnm'},'Nombre en la insignia'),nm,cv,h('div',{class:'row'},h('button',{class:'btn',type:'button',onclick:sh},'Compartir'),h('button',{class:'btn alt',style:'color:var(--tx)',type:'button',onclick:dl},'Descargar PNG'),h('button',{class:'btn alt',style:'color:var(--tx)',type:'button',onclick:cp},'Copiar texto')))}
+const PER='<circle cx="60" cy="34" r="14" fill="#fff"/><path d="M30 78 Q60 42 90 78Z" fill="#fff"/>';
+const NIGHT={v:0},EARNED=new Set();
+EN.push(['Mis insignias','My badges'],['Gana una insignia por cada ruta que completes y compártela en tus redes con #RaízCentral.','Earn a badge for every route you complete and share it on your networks with #RaízCentral.'],['Bloqueada','Locked'],['Obtenida','Earned'],['Asistí al evento (demo)','I attended the event (demo)'],['Ver precios','View prices'],[' productos comparables',' comparable products'],['Foto de tu negocio','Your business photo'],['Foto de la guía','Guide photo'],['Descargar','Download']);
+const tlRow=()=>h('div',{class:'tl'},STOPS.map((s,i)=>h('div',{class:'tn'},h('span',{},i+1),h('small',{},s.n.split(' ')[0]))));
+const pageHead=(t,d,key,ai)=>h('section',{class:'hero'},h('h1',{style:'font-size:clamp(1.8rem,5vw,2.6rem)'},t),h('p',{},d),slot('pg'+key,IMG.pg[key],'banner',ART[ai],BGC[ai]));
+const cvBlob=cv=>new Promise(r=>cv.toBlob(r,'image/png'));
+async function dlCv(cv,nm){const b=await cvBlob(cv);const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=nm+'.png';document.body.append(a);a.click();a.remove();toast(tr('Insignia descargada.'))}
+async function shareCv(cv,nm,txt){try{const b=await cvBlob(cv);const f=new File([b],nm+'.png',{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]}))await navigator.share({files:[f],text:txt});else if(navigator.share)await navigator.share({text:txt});else await dlCv(cv,nm)}catch(e){if(!e||e.name!=='AbortError')toast(tr('No se pudo compartir; descarga la imagen y súbela a tu red.'))}}
+function badgeDefs(){const n=STAMP.filter(x=>x.s).length,m=STAMP.filter(x=>x.m).length,ex=n>=3,cl=n>=6,no=!!NIGHT.v;
+ return[{k:'ex',n:'Explorador Express',s:'Ruta Express completada',col:'#4fd1a0',ok:ex,d:'Consigue 3 sellos (Ruta Express).',pr:Math.min(n,3)+'/3'},
+ {k:'cl',n:'Familia Clásica',s:'Ruta Clásica completada',col:'#f5b800',ok:cl,d:'Consigue los 6 sellos (Ruta Clásica).',pr:n+'/6'},
+ {k:'no',n:'Noctámbulo Cultural',s:'Ruta Nocturna completada',col:'#a78bfa',ok:no,d:'Asiste a un evento de la Ruta Nocturna.',pr:(no?1:0)+'/1',night:1},
+ {k:'mi',n:'Misionero Familiar',s:'6 misiones cumplidas',col:'#ff8a65',ok:m>=6,d:'Cumple las 6 misiones familiares.',pr:m+'/6'},
+ {k:'em',n:'Embajador Raíz',s:'Las 3 rutas completadas',col:'#60a5fa',ok:ex&&cl&&no,d:'Gana Explorador, Familia y Noctámbulo.',pr:[ex,cl,no].filter(Boolean).length+'/3'}]}
+function badgeGrid(refresh){
+ const nm=h('input',{type:'text',placeholder:'Tu nombre (opcional)',id:'bnm',value:BADGE.name,maxlength:28});
+ const cards=badgeDefs().map(b=>{
+  const cv=document.createElement('canvas');cv.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover'+(b.ok?'':';filter:grayscale(1) opacity(.4)');
+  const paint=()=>drawBadge(nm.value.trim(),cv,{t:b.n,s:b.s,col:b.col});paint();nm.addEventListener('input',paint);
+  if(b.ok&&!EARNED.has(b.k)){EARNED.add(b.k);setTimeout(()=>toast('🏅 ¡Nueva insignia: '+b.n+'!'),400)}
+  const txt=LANG==='en'?`I earned the “${b.n}” badge on the Raíz Central route in San Salvador’s Historic Center! #RaízCentral`:`¡Gané la insignia «${b.n}» en la ruta Raíz Central por el Centro Histórico de San Salvador! #RaízCentral`;
+  const acts=b.ok?h('div',{style:'display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem'},h('button',{class:'btn',type:'button',onclick:()=>shareCv(cv,'insignia-'+b.k,txt)},'Compartir'),h('button',{class:'btn alt',style:'color:var(--tx)',type:'button',onclick:()=>dlCv(cv,'insignia-'+b.k)},'Descargar')):(b.night?h('button',{class:'stampb',type:'button',onclick:()=>{NIGHT.v=1;refresh()}},'Asistí al evento (demo)'):'');
+  return h('div',{class:'card scard'},h('div',{class:'slot',style:'min-height:150px;background:#1b2145'},cv),h('div',{class:'bd'},h('h3',{},b.n),h('span',{class:'tag '+(b.ok?'ok':'')},b.ok?'Obtenida':'Bloqueada'),h('span',{class:'tag'},b.pr),h('p',{class:'mut',style:'margin:.3rem 0 0'},b.d),acts))});
+ return h('div',{},h('label',{for:'bnm'},'Nombre en la insignia'),nm,h('div',{style:'height:.8rem'}),h('div',{class:'grid sg'},cards))}
+function pasaporte(){
+ const bar=h('div'),list=h('div',{class:'grid sg'}),bd=h('div');
+ const draw=()=>{const n=STAMP.filter(x=>x.s).length,full=n===6,p=STAMP.reduce((a,x)=>a+x.s+x.m,0);
+  bar.replaceChildren(h('div',{class:'card'},h('h3',{},`Tu progreso: ${n} de 6 sellos · ${p} puntos`),h('progress',{value:n,max:6,style:'width:100%;height:14px'}),h('p',{class:full?'ok':'mut'},full?'¡Premio desbloqueado! Muestra esta pantalla y recibe un café o dulce típico gratis, más un descuento para volver.':'Completa los 6 sellos para desbloquear un café o dulce típico gratis y un descuento para volver.')));
+  list.replaceChildren(...STOPS.map((s,i)=>{const x=STAMP[i];return h('div',{class:'card scard'},slot('s'+i,IMG.stops[i],'',ART[i],BGC[i]),h('div',{class:'bd'},h('h3',{},`${i+1}. ${s.n}`),h('span',{class:'tag '+(x.s?'ok':'')},x.s?'Sello obtenido':'Sin sello'),h('div',{class:'mis'},h('b',{},'Misión: '),MISS[i]),h('button',{class:'stampb'+(x.s?' done':''),disabled:!!x.s,onclick:()=>{x.s=1;draw();toast('Sello obtenido (demo).')}},x.s?'Sello listo':'Escanear QR (demo)'),' ',h('button',{class:'stampb'+(x.m?' done':''),disabled:!!x.m,onclick:()=>{x.m=1;draw();toast('Misión cumplida: +1 punto.')}},x.m?'Misión cumplida':'Cumplí la misión')))}));
+  bd.replaceChildren(badgeGrid(draw))};
+ draw();
+ return[pageHead('Tu pasaporte Raíz Central','Escanea el QR de cada parada para ganar un sello y cumple la misión familiar para sumar puntos. Los 6 sellos desbloquean un premio.','pasaporte',0),bar,tlRow(),list,h('h2',{style:'margin-top:1.5rem'},'Mis insignias'),h('p',{class:'mut'},'Gana una insignia por cada ruta que completes y compártela en tus redes con #RaízCentral.'),bd]}
+function route(){const v=(location.hash||'#inicio').slice(1);const k=VIEWS[v]?v:'inicio';nav(k);const m=$('#app');m.replaceChildren(...{inicio,pasaporte,comparador,guias,comunidad,negocios}[k]());$('#foot').textContent=tr(FOOT);window.scrollTo(0,0)}
+addEventListener('hashchange',route);
+$('#edt').addEventListener('click',()=>document.body.classList.toggle('noedit'));
+$('#lang').addEventListener('click',()=>{LANG=LANG==='es'?'en':'es';$('#lang').textContent=LANG==='es'?'EN':'ES';document.documentElement.lang=LANG;route()});
+route();
+</script></body></html>
